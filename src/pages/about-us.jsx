@@ -22,7 +22,6 @@ const AboutUsPage = ({ location, pageContext }) => {
             <AboutPlatform />
             <BunzoHistoryArea />
             <TeamMembersArea />
-            <TestimonialArea />
         </Layout>
     );
 };
