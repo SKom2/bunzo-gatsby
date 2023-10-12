@@ -50,11 +50,6 @@ const Header = () => {
                         id
                         text
                         link
-                        isSubmenu
-                        submenu {
-                            link
-                            text
-                        }
                     }
                 }
             }
