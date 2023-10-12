@@ -50,7 +50,7 @@ export const TrendingBlogPostCategory = styled.div`
     ${device.medium} {
         margin-right: 25px;
     }
-    a {
+    p {
         min-width: 50px;
         text-align: center;
         padding: 4px 5px;
@@ -67,9 +67,11 @@ export const TrendingBlogPostCategory = styled.div`
 `;
 
 export const TrendingBlogPostAuthor = styled.div`
+    display: flex;
+    gap: 4px;
     color: #9b9ea1;
     font-size: 13px;
-    a {
+    p {
         color: #000000;
     }
     ${device.medium} {

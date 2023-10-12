@@ -33,18 +33,13 @@ const HeroBlogPost = ({
                     <HeroBlogPostCategory>
                         {categories &&
                             categories.map((cat, i) => (
-                                <Link
-                                    key={i}
-                                    to={`category/${slugify(cat.name)}`}
-                                    className={`cat-btn ${cat.color}`}
-                                >
+                                <p key={i} className={`cat-btn ${cat.color}`}>
                                     {cat.name}
-                                </Link>
+                                </p>
                             ))}
                     </HeroBlogPostCategory>
                     <HeroBlogPostAuthor>
-                        By{" "}
-                        <Link to={`/profile/${authorSlug}`}>{authorSlug}</Link>
+                        By <p>{authorSlug}</p>
                     </HeroBlogPostAuthor>
                 </HeroBlogPostTop>
                 <HeroBlogPostTitle>

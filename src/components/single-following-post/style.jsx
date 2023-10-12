@@ -26,8 +26,10 @@ export const FollowingBlogPostCategory = styled.div`
     margin-right: 25px;
 `;
 export const FollowingBlogPostAuthor = styled.div`
+    display: flex;
+    gap: 4px;
     color: #9b9ea1;
-    a {
+    p {
         color: #000000;
     }
 `;

@@ -34,8 +34,7 @@ const TrendingTody = ({
             <Col lg={6} md={6}>
                 <TrendingPostContent>
                     <BlogPostAuthor>
-                        By{" "}
-                        <Link to={`/profile/${authorSlug}`}>{authorSlug}</Link>
+                        By <p>{authorSlug}</p>
                     </BlogPostAuthor>
 
                     <BlogPostTitle>

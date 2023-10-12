@@ -46,20 +46,13 @@ const LargeSinglePosts = ({
                         <BlogPostCategory>
                             {categories &&
                                 categories.map((cat, i) => (
-                                    <Link
-                                        key={i}
-                                        to={`/category/${slugify(cat.name)}`}
-                                        className={`${cat.color}`}
-                                    >
+                                    <p key={i} className={`${cat.color}`}>
                                         {cat.name}
-                                    </Link>
+                                    </p>
                                 ))}
                         </BlogPostCategory>
                         <BlogPostAuthor>
-                            By{" "}
-                            <Link to={`/profile/${authorSlug}`}>
-                                {authorId}
-                            </Link>
+                            By <p>{authorId}</p>
                         </BlogPostAuthor>
                     </PostMetaLeftSide>
                     <PostMetaRightSide>

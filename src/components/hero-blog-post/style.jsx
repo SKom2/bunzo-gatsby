@@ -41,7 +41,9 @@ export const HeroBlogPostCategory = styled.div`
 `;
 export const HeroBlogPostAuthor = styled.div`
     color: #9b9ea1;
-    .hero-blog-post-author a {
+    display: flex;
+    gap: 4px;
+    .hero-blog-post-author p {
         color: #000000;
     }
 `;

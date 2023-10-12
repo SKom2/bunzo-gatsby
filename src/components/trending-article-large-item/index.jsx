@@ -55,17 +55,13 @@ const TrendingSingleLargeItems = ({
                     <TrendingBlogPostCategory>
                         {categories &&
                             categories.map((cat, i) => (
-                                <Link
-                                    key={i}
-                                    to={`/category/${slugify(cat.name)}`}
-                                    className={`cat-btn ${cat.color}`}
-                                >
+                                <p key={i} className={`cat-btn ${cat.color}`}>
                                     {cat.name}
-                                </Link>
+                                </p>
                             ))}
                     </TrendingBlogPostCategory>
                     <TrendingBlogPostAuthor>
-                        By <Link to={`/profile/${authorSlug}`}>{authorId}</Link>
+                        By <p>{authorId}</p>
                     </TrendingBlogPostAuthor>
                 </TrendingBlogPostTop>
                 <HrendingBlogPostTitle>
