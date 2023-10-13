@@ -14,6 +14,8 @@ import {
 } from "./style";
 import { useForm } from "../../hooks/useForm";
 import * as Auth from "../../api/Auth";
+import { toast } from "react-toastify";
+import * as constants from "../../utils/constants";
 
 const LoginForm = () => {
     const { values, handleChange, errors, isValid } = useForm({
@@ -21,16 +23,19 @@ const LoginForm = () => {
         password: "",
     });
 
+    const notify = (text) => {
+        toast(text);
+    };
+
     function loginUser(e) {
         e.preventDefault();
         if (isValid) {
             Auth.authorize(values.password, values.email)
                 .then((res) => {
                     navigate("/");
-                    console.log("vse ok");
                 })
                 .catch(() => {
-                    console.log("something went wrong");
+                    notify(constants.userAttentionMessages.errorInUserAuth);
                 });
         }
     }

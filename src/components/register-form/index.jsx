@@ -14,14 +14,22 @@ import {
 } from "./style";
 import { useForm } from "../../hooks/useForm";
 import * as Auth from "../../api/Auth";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import * as constants from "../../utils/constants";
 
 const RegisterForm = () => {
     const [isChecked, setIsChecked] = useState(false);
-    const { values, handleChange, errors, isValid } = useForm({
+    const [attentionMessage, setAttentionMessage] = useState("");
+    const { values, handleChange, isValid } = useForm({
         username: "",
         email: "",
         password: "",
     });
+
+    const notify = (text) => {
+        toast(text);
+    };
 
     function registerUser(e) {
         e.preventDefault();
@@ -29,10 +37,9 @@ const RegisterForm = () => {
             Auth.register(values.username, values.password, values.email)
                 .then((res) => {
                     navigate("/");
-                    console.log("vse ok");
                 })
-                .catch(() => {
-                    console.log("something went wrong");
+                .catch((err) => {
+                    notify(constants.userAttentionMessages.errorInUserRegister);
                 });
         }
     }
@@ -96,6 +103,7 @@ const RegisterForm = () => {
                     A member? <Link to="/login"> Log in now</Link>
                 </PageLinkDec>
             </MemberRegister>
+            <ToastContainer />
         </Form>
     );
 };

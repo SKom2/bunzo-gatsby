@@ -9,13 +9,13 @@ const HeroCategory = ({ image, name }) => {
     const images = getImage(image);
     return (
         <SingleHeroCategoryItem>
-            <Link to={`/category/${slugify(name)}`}>
+            <span>
                 <GatsbyImage image={images} alt={name} />
                 <HeroCategoryInnerBox className="single-hero-hover">
                     <Title>{name}</Title>
                     <i className="icon icofont-long-arrow-right"></i>
                 </HeroCategoryInnerBox>
-            </Link>
+            </span>
         </SingleHeroCategoryItem>
     );
 };
