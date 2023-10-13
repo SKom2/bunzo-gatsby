@@ -14,6 +14,7 @@ const Button = ({
     className,
     path,
     label,
+    disabled,
     ...props
 }) => {
     const buttonProps = {
@@ -66,6 +67,7 @@ const Button = ({
 
     return (
         <StyledButton
+            disabled={disabled}
             className={className}
             type={type}
             {...buttonProps}
@@ -104,6 +106,7 @@ Button.propTypes = {
     variant: PropTypes.oneOf(["outlined", "iconButton"]),
     path: PropTypes.string,
     label: PropTypes.string,
+    disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
