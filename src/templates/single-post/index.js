@@ -77,29 +77,24 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                     {post.categories &&
                                                         post.categories.map(
                                                             (categorie, i) => (
-                                                                <Link
+                                                                <p
                                                                     className={`post-category ${categorie.color}`}
                                                                     key={`${slugify(
                                                                         categorie
                                                                     )}-${i}`}
-                                                                    to={`/category/${slugify(
-                                                                        categorie.name
-                                                                    )}`}
                                                                 >
                                                                     {
                                                                         categorie.name
                                                                     }
-                                                                </Link>
+                                                                </p>
                                                             )
                                                         )}
                                                 </MetaBox>
                                                 <BlogDetailsPostAuthor>
                                                     By{" "}
-                                                    <Link
-                                                        to={`/profile/${authorId}`}
-                                                    >
+                                                    <p>
                                                         {author.name}
-                                                    </Link>
+                                                    </p>
                                                 </BlogDetailsPostAuthor>
                                             </PostMetaLeftSide>
 
@@ -189,16 +184,6 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                 </SocialLink>
                                             </Social>
                                         </CategorySocialContent>
-
-                                        <CommentArea>
-                                            <CommentTitle>
-                                                Comments
-                                            </CommentTitle>
-                                            <DiscussionEmbed
-                                                shortname={disqusShorttname}
-                                                config={disquscConfig}
-                                            />
-                                        </CommentArea>
                                     </Content>
                                 </PostDetailsBody>
                             </PostDetailsContentWrap>

@@ -157,7 +157,7 @@ const Header = () => {
 
                 <HeaderMidArea>
                     <Container>
-                        <Row className="align-items-center">
+                        <Row className="align-items-center justify-content-between">
                             <Col lg={3} md={2} xs={4}>
                                 <Logo>
                                     <Link to="/">
@@ -167,19 +167,6 @@ const Header = () => {
                                         />
                                     </Link>
                                 </Logo>
-                            </Col>
-                            <Col lg={6} md={6} className="d-md-block d-none">
-                                <HeaderAddBanner>
-                                    <a href="/">
-                                        <StaticImage
-                                            src="../../../data/images/banners/header-add-banner.jpg"
-                                            alt=""
-                                        />
-                                        <HeaderAddText>
-                                            All Food Item<span>50% Off</span>
-                                        </HeaderAddText>
-                                    </a>
-                                </HeaderAddBanner>
                             </Col>
                             <Col lg={3} md={4} xs={8}>
                                 <HeaderMidRightSide>

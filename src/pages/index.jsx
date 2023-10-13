@@ -14,7 +14,6 @@ const IndexPage = () => {
             <HeroOne />
             <TredingArticle />
             <FromFollowingArea />
-            <AddBanner />
         </Layout>
     );
 };

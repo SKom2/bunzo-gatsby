@@ -47,7 +47,13 @@ export const PostMetaLeftSide = styled.div`
     }
 `;
 
-export const BlogDetailsPostAuthor = styled.div``;
+export const BlogDetailsPostAuthor = styled.div`
+    display: flex;
+    gap: 4px;
+    p {
+        color: #000000;
+    }
+`;
 export const PostMidSide = styled.div`
     display: flex;
     align-items: center;
