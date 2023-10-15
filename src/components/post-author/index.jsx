@@ -27,7 +27,7 @@ const PostAuthorBox = ({
     return (
         <FollowingAuthorArea>
             <AuthorImage>
-                <GatsbyImage image={image} alt="" />
+                <img src={`http://45.120.178.247:8081/${postAuthorImage}`} alt="" />
             </AuthorImage>
             <AuthorTitle>
                 <AuthorName>

@@ -16,37 +16,33 @@ import {
     PostDate,
     PostReadTime,
 } from "./style";
+import { getConvertedDate } from "../../utils/functions";
 
 const SingleFollowingPosts = ({
     title,
-    thume_image,
+    image,
     date,
     slug,
-    dateSlug,
-    categories,
-    authorSlug,
+    tag,
+    name,
     authorId,
 }) => {
-    const image = getImage(thume_image);
     return (
         <SingleFollowingPost>
             <FollowingPostThum>
                 <Link to={`/${slug}`}>
-                    <GatsbyImage image={image} alt="" />
+                    <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
                 </Link>
             </FollowingPostThum>
             <FollowingPostContent>
                 <FollowingBlogPostTop>
                     <FollowingBlogPostCategory>
-                        {categories &&
-                            categories.map((cat, i) => (
-                                <p key={i} className={`cat-btn ${cat.color}`}>
-                                    {cat.name}
-                                </p>
-                            ))}
+                        <p className={`cat-btn ${tag}`}>
+                            {tag}
+                        </p>
                     </FollowingBlogPostCategory>
                     <FollowingBlogPostAuthor>
-                        By <p>{authorId}</p>
+                        By <p>{name}</p>
                     </FollowingBlogPostAuthor>
                 </FollowingBlogPostTop>
                 <FollowingBlogPostTitle>
@@ -56,9 +52,8 @@ const SingleFollowingPosts = ({
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
-                        <PostReadTime>10 min read</PostReadTime>
                     </PostMetaLeftSide>
                     <PostMetaRightSide>
                         <a href="/">

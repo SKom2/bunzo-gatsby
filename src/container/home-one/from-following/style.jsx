@@ -31,6 +31,7 @@ export const FollowingSliderNavigation = styled.div`
         border-radius: 50000px;
         display: inline-block;
         transition: all 0.3s ease-in-out;
+        cursor: pointer;
         &.following-slider-button-prev {
             margin-left: 10px;
         }

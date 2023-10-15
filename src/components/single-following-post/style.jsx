@@ -57,23 +57,12 @@ export const PostMetaRightSide = styled.div`
     }
 `;
 export const PostDate = styled.span`
+    display: flex;
+    align-items: center;
     position: relative;
     padding-right: 14px;
     margin-right: 10px;
     font-size: 13px;
-    &:after {
-        position: absolute;
-        content: "";
-        right: -0px;
-        top: 50%;
-        height: 4px;
-        width: 4px;
-        background: #000000;
-        border-radius: 50000px;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
     i {
         margin-right: 4px;
     }
