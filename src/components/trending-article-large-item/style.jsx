@@ -80,23 +80,14 @@ export const TrendingBlogPostMeta = styled.div`
 `;
 export const PostMetaLeftSide = styled.div``;
 export const PostDate = styled.span`
+    display: flex;
+    align-items: center;
     position: relative;
     padding-right: 10px;
     margin-right: 10px;
     font-size: 13px;
     i {
         margin-right: 3px;
-    }
-    &::after {
-        position: absolute;
-        content: "";
-        right: -0px;
-        top: 50%;
-        height: 4px;
-        width: 4px;
-        background: #000000;
-        border-radius: 50000px;
-        transform: translateY(-50%);
     }
 `;
 export const ReadTime = styled.span`

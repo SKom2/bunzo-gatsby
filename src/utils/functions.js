@@ -1,5 +1,29 @@
 /* eslint-disable prettier/prettier */
 
+const getConvertedDate = function (date) {
+    const createDate = new Date(date);
+
+    const months = [
+        "January", "February", "March", "April", "May", "June", "July",
+        "August", "September", "October", "November", "December"
+    ];
+
+    const day = createDate.getDate();
+    const month = months[createDate.getMonth()];
+    const year = createDate.getFullYear();
+
+    return `${day} ${month} ${year}`;
+
+}
+
+const formatTitleToURL = function (title) {
+    let formattedTitle = title.toLowerCase().replace(/ /g, "-");
+
+    formattedTitle = formattedTitle.replace(/[^a-z0-9-]/g, '');
+
+    return formattedTitle;
+}
+
 const getSiblings = function (elem) {
     var siblings = [];
     var sibling = elem.parentNode.firstChild;
@@ -136,4 +160,6 @@ module.exports = {
     slideUp,
     slideDown,
     slideToggle,
+    getConvertedDate,
+    formatTitleToURL
 };

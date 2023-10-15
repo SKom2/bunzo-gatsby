@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import { graphql, useStaticQuery } from "gatsby";
@@ -10,110 +10,29 @@ import {
     TrendingArticleLeftSide,
     TrendingArticleRightSide,
 } from "./style";
+import Api from "../../../api/Api";
+import { api } from "../../../../config/config";
+import { formatTitleToURL } from "../../../utils/functions";
 
-const TredingArticle = (props) => {
-    const tredingArticleQuery = useStaticQuery(graphql`
-        query TredingArticleQueryQuery {
-            smallTredingArticle: allMarkdownRemark(
-                sort: { frontmatter: { date: DESC } }
-                filter: { frontmatter: { is_trending_article: { eq: true } } }
-                limit: 3
-            ) {
-                edges {
-                    node {
-                        id
-                        frontmatter {
-                            title
-                            video_link
-                            categories {
-                                name
-                                color
-                            }
-                            date(formatString: "DD-MM-YYYY")
-                            smallImage: thume_image {
-                                childImageSharp {
-                                    gatsbyImageData(
-                                        width: 100
-                                        height: 169
-                                        layout: CONSTRAINED
-                                        quality: 100
-                                    )
-                                }
-                            }
-                            thume_image {
-                                childImageSharp {
-                                    gatsbyImageData(
-                                        width: 160
-                                        height: 160
-                                        layout: CONSTRAINED
-                                        quality: 100
-                                    )
-                                }
-                            }
-                        }
-                        fields {
-                            slug
-                            authorId
-                            dateSlug
-                        }
-                        excerpt(pruneLength: 225)
-                    }
-                }
-            }
-            largeTredingArticle: allMarkdownRemark(
-                sort: { frontmatter: { date: DESC } }
-                filter: { frontmatter: { is_trending_article: { eq: true } } }
-                limit: 3
-                skip: 3
-            ) {
-                edges {
-                    node {
-                        id
-                        frontmatter {
-                            title
-                            date(formatString: "DD-MM-YYYY")
-                            video_link
-                            categories {
-                                name
-                                color
-                            }
-                            smallImage: thume_image {
-                                childImageSharp {
-                                    gatsbyImageData(
-                                        width: 100
-                                        height: 169
-                                        layout: CONSTRAINED
-                                        quality: 100
-                                    )
-                                }
-                            }
-                            thume_image {
-                                childImageSharp {
-                                    gatsbyImageData(
-                                        width: 315
-                                        height: 160
-                                        layout: CONSTRAINED
-                                        quality: 100
-                                    )
-                                }
-                            }
-                        }
-                        fields {
-                            slug
-                            authorId
-                            dateSlug
-                        }
-                        excerpt(pruneLength: 225)
-                    }
-                }
-            }
-        }
-    `);
+const TredingArticle = () => {
+    const articleApi = new Api(api);
+    const [apiData, setApiData] = useState([]);
 
-    const smalltredingArticleData =
-        tredingArticleQuery.smallTredingArticle.edges;
-    const largetredingArticleData =
-        tredingArticleQuery.largeTredingArticle.edges;
+    useEffect(() => {
+        articleApi
+            .getArticles({
+                page: 0,
+                q: "",
+                isTrends: true,
+                isFollowing: false,
+            })
+            .then((res) => {
+                setApiData(res);
+            });
+    }, [])
+
+    const firstFiveArticles = apiData.filter((_, index) => index % 2 === 0);
+    const nextFiveArticles = apiData.filter((_, index) => index % 2 === 1);
 
     return (
         <TrendingArticleArea>
@@ -129,114 +48,37 @@ const TredingArticle = (props) => {
                     <Col lg={12}>
                         <TrendingArticleRow>
                             <TrendingArticleLeftSide>
-                                {smalltredingArticleData &&
-                                    smalltredingArticleData.map(
-                                        (item, index) => {
-                                            return (
-                                                <TrendingSingleItems
-                                                    key={`trending-${index}`}
-                                                    title={
-                                                        item.node.frontmatter
-                                                            .title
-                                                    }
-                                                    thume_image={
-                                                        item.node.frontmatter
-                                                            .thume_image
-                                                    }
-                                                    small_image={
-                                                        item.node.frontmatter
-                                                            .smallImage
-                                                    }
-                                                    categories={
-                                                        item.node.frontmatter
-                                                            .categories
-                                                    }
-                                                    slug={item.node.fields.slug}
-                                                    authorSlug={
-                                                        item.node.fields
-                                                            .authorId
-                                                    }
-                                                    authorId={
-                                                        item.node.fields
-                                                            .authorId
-                                                    }
-                                                    postAuthor={
-                                                        item.node.frontmatter
-                                                            .author
-                                                    }
-                                                    body={item.node.excerpt}
-                                                    date={
-                                                        item.node.frontmatter
-                                                            .date
-                                                    }
-                                                    dateSlug={
-                                                        item.node.fields
-                                                            .dateSlug
-                                                    }
-                                                />
-                                            );
-                                        }
-                                    )}
+                                {firstFiveArticles.map((item, index) => {
+                                    return (
+                                        <TrendingSingleItems
+                                            key={`trending-${index}`}
+                                            title={item.title}
+                                            image={item.image}
+                                            tag={item.tag}
+                                            name={item.author.name}
+                                            slug={formatTitleToURL(item.title)}
+                                            authorId={item.authorId}
+                                            date={item.createdAt}
+                                        />
+                                    );
+                                })}
                             </TrendingArticleLeftSide>
 
                             <TrendingArticleRightSide>
-                                {largetredingArticleData &&
-                                    largetredingArticleData.map(
-                                        (followingBlog, i) => {
-                                            return (
-                                                <TrendingSingleLargeItems
-                                                    key={`largetrending-${i}`}
-                                                    title={
-                                                        followingBlog.node
-                                                            .frontmatter.title
-                                                    }
-                                                    thume_image={
-                                                        followingBlog.node
-                                                            .frontmatter
-                                                            .thume_image
-                                                    }
-                                                    small_image={
-                                                        followingBlog.node
-                                                            .frontmatter
-                                                            .smallImage
-                                                    }
-                                                    categories={
-                                                        followingBlog.node
-                                                            .frontmatter
-                                                            .categories
-                                                    }
-                                                    slug={
-                                                        followingBlog.node
-                                                            .fields.slug
-                                                    }
-                                                    authorSlug={
-                                                        followingBlog.node
-                                                            .fields.authorId
-                                                    }
-                                                    authorId={
-                                                        followingBlog.node
-                                                            .fields.authorId
-                                                    }
-                                                    postAuthor={
-                                                        followingBlog.node
-                                                            .frontmatter.author
-                                                    }
-                                                    body={
-                                                        followingBlog.node
-                                                            .excerpt
-                                                    }
-                                                    date={
-                                                        followingBlog.node
-                                                            .frontmatter.date
-                                                    }
-                                                    dateSlug={
-                                                        followingBlog.node
-                                                            .fields.dateSlug
-                                                    }
-                                                />
-                                            );
-                                        }
-                                    )}
+                                {nextFiveArticles.map((item, index) => {
+                                    return (
+                                        <TrendingSingleLargeItems
+                                            key={`largetrending-${index}`}
+                                            title={item.title}
+                                            image={item.image}
+                                            tag={item.tag}
+                                            name={item.author.name}
+                                            slug={formatTitleToURL(item.title)}
+                                            authorId={item.authorId}
+                                            date={item.createdAt}
+                                        />
+                                    );
+                                })}
                             </TrendingArticleRightSide>
                         </TrendingArticleRow>
                     </Col>

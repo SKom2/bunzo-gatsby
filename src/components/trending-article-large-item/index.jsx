@@ -21,47 +21,36 @@ import {
     PostMetaRightSide,
     TrendingLargePostThum,
 } from "./style";
+import { getConvertedDate } from "../../utils/functions";
 
 const TrendingSingleLargeItems = ({
     title,
-    thume_image,
-    small_image,
+    image,
+    tag,
+    name,
     date,
     dateSlug,
-    categories,
     authorId,
     authorSlug,
     slug,
 }) => {
-    const images = withArtDirection(getImage(thume_image), [
-        {
-            media: "(max-width: 1024px)",
-            image: getImage(thume_image),
-        },
-        {
-            media: "(max-width: 575px)",
-            image: getImage(small_image),
-        },
-    ]);
+
     return (
         <TrendingSingleItem>
             <TrendingLargePostThum>
                 <Link to={`/${slug}`}>
-                    <GatsbyImage image={images} alt="" />
+                    <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
                 </Link>
             </TrendingLargePostThum>
             <TrendingPostContent>
                 <TrendingBlogPostTop>
                     <TrendingBlogPostCategory>
-                        {categories &&
-                            categories.map((cat, i) => (
-                                <p key={i} className={`cat-btn ${cat.color}`}>
-                                    {cat.name}
-                                </p>
-                            ))}
+                        <p className={`cat-btn ${tag}`}>
+                            {tag}
+                        </p>
                     </TrendingBlogPostCategory>
                     <TrendingBlogPostAuthor>
-                        By <p>{authorId}</p>
+                        By <p>{name}</p>
                     </TrendingBlogPostAuthor>
                 </TrendingBlogPostTop>
                 <HrendingBlogPostTitle>
@@ -71,9 +60,8 @@ const TrendingSingleLargeItems = ({
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
-                        <ReadTime>10 min read</ReadTime>
                     </PostMetaLeftSide>
                     <PostMetaRightSide>
                         <Link to="/">
