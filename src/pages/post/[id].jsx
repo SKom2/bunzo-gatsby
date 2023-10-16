@@ -140,8 +140,6 @@ const SinglePosts = ({ id, location, pageContext }) => {
                     postAuthordescription={post.author.description}
                   />
                 )}
-                <LatestPostArea />
-                <StayInTouchs />
               </div>
             </Col>
           </Row>
