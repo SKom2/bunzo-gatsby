@@ -40,6 +40,7 @@ import {
     CloseAction,
     ButtonClose,
 } from "./style";
+import { contactInfo } from "../../../utils/constants";
 
 const Header = () => {
     const allmenuData = useStaticQuery(graphql`
@@ -94,7 +95,7 @@ const Header = () => {
                                 </HeaderTopContactIcon>
                                 <HeaderTopContactText>
                                     <NavLink href="tel:970262-1413">
-                                        (970) 262-1413
+                                        {contactInfo.number}
                                     </NavLink>
                                 </HeaderTopContactText>
                             </HeaderTopSingleContactItem>
@@ -108,7 +109,7 @@ const Header = () => {
                                 </HeaderTopContactIcon>
                                 <HeaderTopContactText>
                                     <NavLink href="mailto:address@gmail.com">
-                                        address@gmail.com
+                                        {contactInfo.email}
                                     </NavLink>
                                 </HeaderTopContactText>
                             </HeaderTopSingleContactItem>
@@ -130,16 +131,6 @@ const Header = () => {
                             </Col>
                             <Col lg={3} md={4} xs={8}>
                                 <HeaderMidRightSide>
-                                    <SingleActionItem
-                                        href="#!"
-                                        onClick={SearchHandaler}
-                                        onKeyDown={ofcanvasHandaler}
-                                    >
-                                        <StaticImage
-                                            src="../../../data/images/icons/search.png"
-                                            alt=""
-                                        />
-                                    </SingleActionItem>
                                     <SingleActionItem href={`${isLoggedIn ? "/profile" : "/register"}`}>
                                         <StaticImage
                                             src="../../../data/images/icons/user.png"

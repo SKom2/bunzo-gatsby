@@ -17,4 +17,9 @@ const errorStatuses = {
     unauthorizedError: "Error: Ошибка код 401",
 };
 
-export { userAttentionMessages, errorStatuses, moviesAttentionMessages };
+const contactInfo = {
+    number: '(970) 262-1413',
+    email: 'address@gmail.com'
+}
+
+export { userAttentionMessages, errorStatuses, moviesAttentionMessages, contactInfo };
