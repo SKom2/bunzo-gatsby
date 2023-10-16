@@ -18,26 +18,10 @@ import { formatTitleToURL } from "../../../utils/functions";
 import Api from "../../../api/Api";
 import { api } from "../../../../config/config";
 
-const FromFollowingArea = ({}) => {
-    const articleApi = new Api(api);
-    const [apiData, setApiData] = useState([]);
-
-    useEffect(() => {
-        articleApi
-          .getArticles({
-              page: 0,
-              q: "",
-              isTrends: false,
-              isFollowing: true,
-          })
-          .then((res) => {
-              setApiData(res);
-          });
-    }, [])
-
+const FromFollowingArea = ({followingApiData}) => {
     let postsByAuthor = {};
 
-    apiData.forEach((data) => {
+    followingApiData.forEach((data) => {
         const { authorId } = data;
 
         if (!postsByAuthor[authorId]) {
@@ -98,6 +82,7 @@ const FromFollowingArea = ({}) => {
                                                             key={i}
                                                         >
                                                             <SingleFollowingPosts
+                                                              id={item.id}
                                                               title={item.title}
                                                               image={item.image}
                                                               tag={item.tag}

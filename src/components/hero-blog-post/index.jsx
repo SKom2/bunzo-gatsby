@@ -16,41 +16,47 @@ import {
     PostReadTime,
     PostMetaRightSide,
 } from "./style";
+import { getConvertedDate } from "../../utils/functions";
 
 const HeroBlogPost = ({
     title,
     body,
     date,
     slug,
+    tag,
     dateSlug,
     categories,
     authorSlug,
+    name,
+    id,
+    description
 }) => {
+
+    const maxCharacters = 100; // Максимальное количество символов
+    const truncatedDescription = description.length > maxCharacters ? description.slice(0, maxCharacters) + '...' : description;
+
     return (
         <Fragment>
             <SingleHeroBlogPost>
                 <HeroBlogPostTop>
                     <HeroBlogPostCategory>
-                        {categories &&
-                            categories.map((cat, i) => (
-                                <p key={i} className={`cat-btn ${cat.color}`}>
-                                    {cat.name}
-                                </p>
-                            ))}
+                        <p className={`cat-btn ${tag}`}>
+                            {tag}
+                        </p>
                     </HeroBlogPostCategory>
                     <HeroBlogPostAuthor>
-                        By <p>{authorSlug}</p>
+                        By <p>{name}</p>
                     </HeroBlogPostAuthor>
                 </HeroBlogPostTop>
                 <HeroBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </HeroBlogPostTitle>
-                <PostShortDetails>{body}</PostShortDetails>
+                <PostShortDetails>{truncatedDescription}</PostShortDetails>
                 <HeroBlogPostMeta>
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <p>{date}</p>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
                     </PostMetaLeftSide>
                 </HeroBlogPostMeta>

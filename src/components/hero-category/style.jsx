@@ -20,13 +20,9 @@ export const SingleHeroCategoryItem = styled.div`
         ${device.xlarge} {
             margin-bottom: 30px;
         }
-
-        .gatsby-image-wrapper-constrained {
-            display: block !important;
-            img {
-                border-radius: 15px;
-                width: 100%;
-            }
+        img {
+            border-radius: 15px;
+            width: 100%;
         }
         &::after {
             position: absolute;

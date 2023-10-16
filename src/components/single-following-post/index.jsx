@@ -26,6 +26,7 @@ const SingleFollowingPosts = ({
     tag,
     name,
     authorId,
+    id
 }) => {
     return (
         <SingleFollowingPost>
@@ -46,7 +47,7 @@ const SingleFollowingPosts = ({
                     </FollowingBlogPostAuthor>
                 </FollowingBlogPostTop>
                 <FollowingBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </FollowingBlogPostTitle>
                 <FollowingBlogPostMeta>
                     <PostMetaLeftSide>

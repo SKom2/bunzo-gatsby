@@ -14,25 +14,11 @@ import Api from "../../../api/Api";
 import { api } from "../../../../config/config";
 import { formatTitleToURL } from "../../../utils/functions";
 
-const TredingArticle = () => {
-    const articleApi = new Api(api);
-    const [apiData, setApiData] = useState([]);
+const TredingArticle = ({ trendingApiData }) => {
 
-    useEffect(() => {
-        articleApi
-            .getArticles({
-                page: 0,
-                q: "",
-                isTrends: true,
-                isFollowing: false,
-            })
-            .then((res) => {
-                setApiData(res);
-            });
-    }, [])
 
-    const firstFiveArticles = apiData.filter((_, index) => index % 2 === 0);
-    const nextFiveArticles = apiData.filter((_, index) => index % 2 === 1);
+    const firstFiveArticles = trendingApiData.filter((_, index) => index % 2 === 0);
+    const nextFiveArticles = trendingApiData.filter((_, index) => index % 2 === 1);
 
     return (
         <TrendingArticleArea>
