@@ -35,6 +35,7 @@ import {
     CommentArea,
     CommentTitle,
 } from "./style";
+import ReactMarkdown from 'react-markdown'
 
 const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.markdownRemark.frontmatter;
