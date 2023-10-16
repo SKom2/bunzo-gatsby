@@ -55,7 +55,7 @@ export const HeroBannerArea = styled.div`
     ${device.large} {
         max-width: auto;
     }
-    a {
+    p {
         display: block;
         padding: 10px;
         background-color: #fff;

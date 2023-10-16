@@ -36,6 +36,9 @@ import {
     CommentTitle,
 } from "./style";
 import ReactMarkdown from 'react-markdown'
+import Api from "../../api/Api";
+import { api } from "../../../config/config";
+import { useEffect, useState } from "react";
 
 const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.markdownRemark.frontmatter;
@@ -54,6 +57,21 @@ const SinglePosts = ({ data, location, pageContext }) => {
         title: post.title,
         url: baseUrl + "/" + pageContext.slug,
     };
+    const articleApi = new Api(api);
+    const [apiData, setApiData] = useState([]);
+
+    useEffect(() => {
+        articleApi
+          .getArticles({
+              page: 0,
+              q: "",
+              isTrends: true,
+              isFollowing: false,
+          })
+          .then((res) => {
+              setApiData(res);
+          });
+    }, [])
 
     return (
         <Layout>
@@ -102,13 +120,11 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                             <PostMidSide>
                                                 <PostDate>
                                                     <i className="icofont-ui-calendar"></i>
-                                                    <Link
-                                                        to={`/date/${dateSlug}`}
+                                                    <p
                                                     >
                                                         {post.date}
-                                                    </Link>
+                                                    </p>
                                                 </PostDate>
-                                                <PostTime>10 min read</PostTime>
                                             </PostMidSide>
 
                                             <PostMetaRightSide>
@@ -128,12 +144,11 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                         </BlogDetailsMetaBox>
 
                                         <Title>{post.title}</Title>
-                                        <SingleBlogContent
-                                            dangerouslySetInnerHTML={{
-                                                __html: data.markdownRemark
-                                                    .html,
-                                            }}
-                                        />
+                                        <SingleBlogContent>
+                                            <ReactMarkdown>
+
+                                            </ReactMarkdown>
+                                        </SingleBlogContent>
 
                                         <CategorySocialContent>
                                             <PostCategoryItems>

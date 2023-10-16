@@ -50,9 +50,8 @@ const HeroBlogPost = ({
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{date}</p>
                         </PostDate>
-                        <PostReadTime>14 min read</PostReadTime>
                     </PostMetaLeftSide>
                     <PostMetaRightSide>
                         <Link to="/">
