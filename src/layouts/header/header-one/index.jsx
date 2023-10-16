@@ -79,80 +79,35 @@ const Header = () => {
         <Fragment>
             <HeaderWrap>
                 <HeaderTopArea>
-                    <Container>
-                        <Row>
-                            <Col
-                                lg={{ span: 3, order: 1 }}
-                                md={{ span: 6, order: 1 }}
-                                sm={{ span: 6, order: 1 }}
-                            >
-                                <HeaderTopMenuList>
-                                    <NavItem>
-                                        <NavLink href="/">Help</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="/">Status</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink href="/">Writers</NavLink>
-                                    </NavItem>
-                                </HeaderTopMenuList>
-                            </Col>
-                            <Col
-                                lg={{ span: 6, order: 2 }}
-                                md={{ span: 12, order: 3 }}
-                                sm={{ span: 12, order: 3 }}
-                            >
-                                <HeaderTopContactInfo>
-                                    <HeaderTopSingleContactItem>
-                                        <HeaderTopContactIcon>
-                                            <StaticImage
-                                                src="../../../data/images/icons/contact-call.png"
-                                                alt=""
-                                            />
-                                        </HeaderTopContactIcon>
-                                        <HeaderTopContactText>
-                                            <NavLink href="tel:970262-1413">
-                                                (970) 262-1413
-                                            </NavLink>
-                                        </HeaderTopContactText>
-                                    </HeaderTopSingleContactItem>
+                        <HeaderTopContactInfo>
+                            <HeaderTopSingleContactItem>
+                                <HeaderTopContactIcon>
+                                    <StaticImage
+                                        src="../../../data/images/icons/contact-call.png"
+                                        alt=""
+                                    />
+                                </HeaderTopContactIcon>
+                                <HeaderTopContactText>
+                                    <NavLink href="tel:970262-1413">
+                                        (970) 262-1413
+                                    </NavLink>
+                                </HeaderTopContactText>
+                            </HeaderTopSingleContactItem>
 
-                                    <HeaderTopSingleContactItem>
-                                        <HeaderTopContactIcon>
-                                            <StaticImage
-                                                src="../../../data/images/icons/contact-emaill.png"
-                                                alt=""
-                                            />
-                                        </HeaderTopContactIcon>
-                                        <HeaderTopContactText>
-                                            <NavLink href="mailto:address@gmail.com">
-                                                address@gmail.com
-                                            </NavLink>
-                                        </HeaderTopContactText>
-                                    </HeaderTopSingleContactItem>
-                                </HeaderTopContactInfo>
-                            </Col>
-                            <Col
-                                lg={{ span: 3, order: 3 }}
-                                md={{ span: 6, order: 2 }}
-                                sm={{ span: 6, order: 2 }}
-                            >
-                                <HeaderTopRightSide>
-                                    <CountyName>Bangladesh</CountyName>
-                                    <Wayder>
-                                        <WayderIcon>
-                                            <StaticImage
-                                                src="../../../data/images/icons/wayder.png"
-                                                alt=""
-                                            />
-                                        </WayderIcon>
-                                        <WayderText>28° C</WayderText>
-                                    </Wayder>
-                                </HeaderTopRightSide>
-                            </Col>
-                        </Row>
-                    </Container>
+                            <HeaderTopSingleContactItem>
+                                <HeaderTopContactIcon>
+                                    <StaticImage
+                                        src="../../../data/images/icons/contact-emaill.png"
+                                        alt=""
+                                    />
+                                </HeaderTopContactIcon>
+                                <HeaderTopContactText>
+                                    <NavLink href="mailto:address@gmail.com">
+                                        address@gmail.com
+                                    </NavLink>
+                                </HeaderTopContactText>
+                            </HeaderTopSingleContactItem>
+                        </HeaderTopContactInfo>
                 </HeaderTopArea>
 
                 <HeaderMidArea>

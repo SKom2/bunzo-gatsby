@@ -53,20 +53,6 @@ const HeroBlogPost = ({
                             <p>{date}</p>
                         </PostDate>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </Link>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </Link>
-                    </PostMetaRightSide>
                 </HeroBlogPostMeta>
             </SingleHeroBlogPost>
         </Fragment>

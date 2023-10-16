@@ -52,6 +52,7 @@ const TredingArticle = () => {
                                     return (
                                         <TrendingSingleItems
                                             key={`trending-${index}`}
+                                            id={item.id}
                                             title={item.title}
                                             image={item.image}
                                             tag={item.tag}
@@ -71,6 +72,7 @@ const TredingArticle = () => {
                                             key={`largetrending-${index}`}
                                             title={item.title}
                                             image={item.image}
+                                            id={item.id}
                                             tag={item.tag}
                                             name={item.author.name}
                                             slug={formatTitleToURL(item.title)}

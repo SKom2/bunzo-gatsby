@@ -32,6 +32,7 @@ const TrendingSingleLargeItems = ({
     dateSlug,
     authorId,
     authorSlug,
+    id,
     slug,
 }) => {
 
@@ -54,7 +55,7 @@ const TrendingSingleLargeItems = ({
                     </TrendingBlogPostAuthor>
                 </TrendingBlogPostTop>
                 <HrendingBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/${slug}/${id}`}>{title}</Link>
                 </HrendingBlogPostTitle>
                 <TrendingBlogPostMeta>
                     <PostMetaLeftSide>
@@ -63,20 +64,6 @@ const TrendingSingleLargeItems = ({
                             <p>{getConvertedDate(date)}</p>
                         </PostDate>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </Link>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </Link>
-                    </PostMetaRightSide>
                 </TrendingBlogPostMeta>
             </TrendingPostContent>
         </TrendingSingleItem>

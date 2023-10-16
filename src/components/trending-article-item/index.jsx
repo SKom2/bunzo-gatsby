@@ -31,6 +31,7 @@ const TrendingSingleItems = ({
     dateSlug,
     authorId,
     authorSlug,
+    id,
     date,
     slug,
 }) => {
@@ -62,20 +63,6 @@ const TrendingSingleItems = ({
                             <p>{getConvertedDate(date)}</p>
                         </PostDate>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </Link>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </Link>
-                    </PostMetaRightSide>
                 </TrendingBlogPostMeta>
             </TrendingPostContent>
         </TrendingSingleItem>

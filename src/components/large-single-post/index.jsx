@@ -46,7 +46,7 @@ const LargeSinglePosts = ({
                         <BlogPostCategory>
                             {categories &&
                                 categories.map((cat, i) => (
-                                    <p key={i} className={`${cat.color}`}>
+                                    <p key={i} className={`cat-btn ${cat.name}`}>
                                         {cat.name}
                                     </p>
                                 ))}
@@ -60,46 +60,12 @@ const LargeSinglePosts = ({
                             <i className="icofont-ui-calendar"></i>
                             <Link to={`/date/${dateSlug}`}>{date}</Link>
                         </PostDate>
-                        <PostReadTime>10 min read</PostReadTime>
                     </PostMetaRightSide>
                 </BlogDetailsMetaBox>
                 <Title>
                     <Link to={`/${slug}`}>{title}</Link>
                 </Title>
                 <DescText>{body}</DescText>
-
-                <LargeBlogPostbottom>
-                    <LargeBlogPostAction>
-                        <AuthorAction>
-                            <StaticImage
-                                src="../../data/images/icons/heart-2.png"
-                                alt=""
-                            />
-                            <CountNumber>8,687</CountNumber>
-                        </AuthorAction>
-                        <AuthorAction>
-                            <StaticImage
-                                src="../../data/images/icons/message.png"
-                                alt=""
-                            />
-                            <CountNumber>9,567</CountNumber>
-                        </AuthorAction>
-                    </LargeBlogPostAction>
-                    <LargeBlogPostAction>
-                        <AuthorAction>
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </AuthorAction>
-                        <AuthorAction>
-                            <StaticImage
-                                src="../../data/images/icons/download.png"
-                                alt=""
-                            />
-                        </AuthorAction>
-                    </LargeBlogPostAction>
-                </LargeBlogPostbottom>
             </AuthorBlogPostContent>
         </LargeBlogPostWrap>
     );

@@ -55,20 +55,6 @@ const SingleFollowingPosts = ({
                             <p>{getConvertedDate(date)}</p>
                         </PostDate>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <a href="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </a>
-                        <a href="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </a>
-                    </PostMetaRightSide>
                 </FollowingBlogPostMeta>
             </FollowingPostContent>
         </SingleFollowingPost>

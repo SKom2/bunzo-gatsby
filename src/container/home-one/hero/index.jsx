@@ -90,12 +90,12 @@ const HeroOne = () => {
                             </HeroCategoryArea>
 
                             <HeroBannerArea>
-                                <p>
+                                <Link to='/'>
                                     <StaticImage
                                         src="../../../data/images/hero/hero-01.jpg"
                                         alt=""
                                     />
-                                </p>
+                                </Link>
                             </HeroBannerArea>
 
                             <HeroBlogPostArea>

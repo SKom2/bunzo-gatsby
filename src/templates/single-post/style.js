@@ -63,8 +63,6 @@ export const PostDate = styled.span`
     display: flex;
     align-items: center;
     position: relative;
-    padding-right: 10px;
-    margin-right: 10px;
     font-size: 13px;
     i {
         margin-right: 5px;

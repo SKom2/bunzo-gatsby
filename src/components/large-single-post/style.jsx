@@ -25,7 +25,10 @@ export const BlogDetailsMetaBox = styled.div`
     }
 `;
 
-export const PostMetaLeftSide = styled.div``;
+export const PostMetaLeftSide = styled.div`
+    display: flex;
+    align-items: center;
+`;
 export const BlogPostCategory = styled.span`
     a {
         height: 40px;
@@ -37,6 +40,8 @@ export const BlogPostCategory = styled.span`
     }
 `;
 export const BlogPostAuthor = styled.span`
+    display: flex;
+    gap: 4px;
     margin-left: 15px;
 `;
 
@@ -44,24 +49,9 @@ export const PostMetaRightSide = styled.div``;
 
 export const PostDate = styled.span`
     position: relative;
-    padding-right: 15px;
-    margin-right: 15px;
     font-size: 13px;
     i {
         margin-right: 5px;
-    }
-    &::after {
-        position: absolute;
-        content: "";
-        right: -0px;
-        top: 50%;
-        height: 4px;
-        width: 4px;
-        background: #000000;
-        border-radius: 50000px;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
     }
 `;
 export const PostReadTime = styled.span`

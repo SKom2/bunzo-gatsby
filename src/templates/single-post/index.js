@@ -44,19 +44,12 @@ const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.markdownRemark.frontmatter;
     const { authorId, dateSlug } = data.markdownRemark.fields;
     const { author } = post;
+    console.log(data)
 
     const image = getImage(post.thume_image.childImageSharp);
 
     // Social Share
     const baseUrl = "https://hasthems.com";
-
-    // Disqus Comments add
-    const disqusShorttname = "mitech-1";
-    const disquscConfig = {
-        identifier: data.markdownRemark.id,
-        title: post.title,
-        url: baseUrl + "/" + pageContext.slug,
-    };
     const articleApi = new Api(api);
     const [apiData, setApiData] = useState([]);
 
@@ -126,30 +119,15 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                     </p>
                                                 </PostDate>
                                             </PostMidSide>
-
-                                            <PostMetaRightSide>
-                                                <a href="/">
-                                                    <StaticImage
-                                                        src="../../data/images/icons/small-bookmark.png"
-                                                        alt=""
-                                                    />
-                                                </a>
-                                                <a href="/">
-                                                    <StaticImage
-                                                        src="../../data/images/icons/heart.png"
-                                                        alt=""
-                                                    />
-                                                </a>
-                                            </PostMetaRightSide>
                                         </BlogDetailsMetaBox>
 
                                         <Title>{post.title}</Title>
-                                        <SingleBlogContent>
-                                            <ReactMarkdown>
-
-                                            </ReactMarkdown>
-                                        </SingleBlogContent>
-
+                                        <SingleBlogContent
+                                          dangerouslySetInnerHTML={{
+                                              __html: data.markdownRemark
+                                                .html,
+                                          }}
+                                        />
                                         <CategorySocialContent>
                                             <PostCategoryItems>
                                                 <span>Tags:</span>

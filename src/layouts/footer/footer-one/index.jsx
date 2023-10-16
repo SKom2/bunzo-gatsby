@@ -129,73 +129,11 @@ const Footer = () => {
                                             ))}
                                     </FooterWidgetMenuList>
                                 </SingleFooterMenu>
-                                <SingleFooterMenu>
-                                    <FooterWidgetTitle>
-                                        <WidgetTitle>Category</WidgetTitle>
-                                    </FooterWidgetTitle>
-
-                                    <FooterWidgetMenuList>
-                                        {quickLinkThree &&
-                                            quickLinkThree.map(
-                                                (linkItem, i) => (
-                                                    <NavItem
-                                                        key={`id-${i}-one`}
-                                                    >
-                                                        <Link
-                                                            to={linkItem.path}
-                                                        >
-                                                            {linkItem.text}
-                                                        </Link>
-                                                    </NavItem>
-                                                )
-                                            )}
-                                    </FooterWidgetMenuList>
-                                </SingleFooterMenu>
                             </FooterMenuWidget>
                         </Col>
                     </Row>
                 </Container>
             </FooterTopArea>
-            <FooterBottomArea>
-                <Container>
-                    <Row>
-                        <Col xs={12} sx={{ textAlign: "center" }}>
-                            <FooterBottomInner>
-                                <CopyrightText>
-                                    &copy; {new Date().getFullYear()}
-                                    <a
-                                        href="https://hasthemes.com/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {" "}
-                                        Bunzo{" "}
-                                    </a>
-                                    . Made with <HeartIcon /> by{" "}
-                                    <a
-                                        href="https://hasthemes.com/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        HasThemes
-                                    </a>
-                                </CopyrightText>
-                                <ButtonRightBox>
-                                    <Button
-                                        path="/contact-us"
-                                        size="large"
-                                        shape="rounded-10"
-                                    >
-                                        {" "}
-                                        Share your thinking{" "}
-                                        <i className="icofont-long-arrow-right"></i>
-                                    </Button>
-                                </ButtonRightBox>
-                            </FooterBottomInner>
-                        </Col>
-                    </Row>
-                </Container>
-            </FooterBottomArea>
         </FooterWrap>
     );
 };

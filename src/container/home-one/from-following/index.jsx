@@ -131,15 +131,6 @@ const FromFollowingArea = ({}) => {
                                                 postsByAuthor[key][0].authorId
                                             }
                                         />
-
-                                        <FollowingAddBanner>
-                                            <a href="/">
-                                                <StaticImage
-                                                    src="../../../data/images/banners/home-following-banner.png"
-                                                    alt=""
-                                                />
-                                            </a>
-                                        </FollowingAddBanner>
                                     </FromFollowingRightSide>
                                 </Row>
                             </SwiperSlide>
