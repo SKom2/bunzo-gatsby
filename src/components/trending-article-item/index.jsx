@@ -38,7 +38,7 @@ const TrendingSingleItems = ({
     return (
         <TrendingSingleItem>
             <TrendingPostThum>
-                <Link to={`/${slug}`}>
+                <Link to={`/post/${id}`}>
                     <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
                 </Link>
             </TrendingPostThum>
@@ -54,7 +54,7 @@ const TrendingSingleItems = ({
                     </TrendingBlogPostAuthor>
                 </TrendingBlogPostTop>
                 <HrendingBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </HrendingBlogPostTitle>
                 <TrendingBlogPostMeta>
                     <PostMetaLeftSide>

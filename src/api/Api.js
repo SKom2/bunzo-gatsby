@@ -29,4 +29,10 @@ export default class Api {
             body: JSON.stringify(data),
         }).then((res) => this._getResponsiveData(res));
     }
+
+    getArticle(id) {
+        return fetch(`${this._config.url}/article/getById/${id}`, {
+            headers: this._config.headers,
+        }).then((res) => this._getResponsiveData(res));
+    }
 }
