@@ -32,6 +32,7 @@ const LoginForm = () => {
         if (isValid) {
             Auth.authorize(values.password, values.email)
                 .then((res) => {
+                    localStorage.setItem('jwt', res.accessToken)
                     navigate("/");
                 })
                 .catch(() => {

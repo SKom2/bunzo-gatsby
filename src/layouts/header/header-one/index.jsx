@@ -64,16 +64,21 @@ const Header = () => {
     const ofcanvasHandaler = () => {
         setOfcanvasOpen((prev) => !prev);
     };
-    // // OfCanvas Menu Open & Remove
-    // const ofcanvasHandaler = () => {
-    //     setOfcanvasOpen(prev => !prev)
-    // }
 
     // OfCanvas Search Open & Remove
     const [ofcanvasSearchOpen, setOfcanvasSearchOpen] = useState(false);
     const SearchHandaler = () => {
         setOfcanvasSearchOpen((prev) => !prev);
     };
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+        const jwt = localStorage.getItem('jwt')
+        if (jwt) {
+            setIsLoggedIn(true)
+        }
+    })
 
     return (
         <Fragment>
@@ -135,7 +140,7 @@ const Header = () => {
                                             alt=""
                                         />
                                     </SingleActionItem>
-                                    <SingleActionItem href="/register">
+                                    <SingleActionItem href={`${isLoggedIn ? "/profile" : "/register"}`}>
                                         <StaticImage
                                             src="../../../data/images/icons/user.png"
                                             alt=""
