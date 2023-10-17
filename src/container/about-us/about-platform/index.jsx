@@ -66,18 +66,6 @@ const AboutPlatform = () => {
         <AboutHistoryArea>
             <Container>
                 <Row className="gx-5">
-                    <Col lg={4}>
-                        <SinglePlatformBox>
-                            <PlatformIcon>
-                                <GatsbyImage image={imageitem1} alt={title} />
-                            </PlatformIcon>
-                            <PlatformContent>
-                                <Title>{title}</Title>
-                                <TextDec>{text1}</TextDec>
-                                <TextDec2>{text2}</TextDec2>
-                            </PlatformContent>
-                        </SinglePlatformBox>
-                    </Col>
                     <Col lg={8}>
                         <SinglePlatformBox className="platform-d-flex">
                             <PlatformContentBox>
@@ -90,24 +78,17 @@ const AboutPlatform = () => {
                                 <PlatformContent>
                                     <Title>{pub_title}</Title>
                                     <TextDec>{pub_text1}</TextDec>
-                                    <TextDec2>{pub_text2}</TextDec2>
+                                    <TextDec>{pub_text2}</TextDec>
                                 </PlatformContent>
                             </PlatformContentBox>
                             <PlateformImageBox>
                                 <PlateforemImage>
                                     <StaticImage
-                                        src="../../../data/images/banners/about-ex-share.jpg"
+                                        src="../../../data/images/banners/about.jpeg"
                                         alt=""
+                                        style={{borderRadius: "10px"}}
                                     />
                                     <PlatformBoxButton>
-                                        <Button
-                                            path="/contact-us"
-                                            size="large"
-                                            shape="rounded-10"
-                                        >
-                                            Share your thinking{" "}
-                                            <i className="icofont-long-arrow-right"></i>
-                                        </Button>
                                     </PlatformBoxButton>
                                 </PlateforemImage>
                             </PlateformImageBox>

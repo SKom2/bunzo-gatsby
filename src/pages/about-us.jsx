@@ -18,10 +18,8 @@ const AboutUsPage = ({ location, pageContext }) => {
                 location={location}
                 title="About Us"
             />
-            <AboutUsVideoArea />
             <AboutPlatform />
             <BunzoHistoryArea />
-            <TeamMembersArea />
         </Layout>
     );
 };
