@@ -10,7 +10,6 @@ const Profile = () => {
 
   useEffect(() => {
     const jwt = localStorage.getItem('jwt')
-    userApi.setToken(jwt)
     userApi.getProfile()
       .then((res) => {
         setUserData({

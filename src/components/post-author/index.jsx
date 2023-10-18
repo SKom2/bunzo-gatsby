@@ -20,7 +20,8 @@ const PostAuthorBox = ({
     postAuthorName,
     postAuthordescription,
     postAuthorImage,
-    postAuthorBio,
+    postAuthorId,
+    postAuthorType,
     authorSlug,
 }) => {
     const image = getImage(postAuthorImage);
@@ -31,12 +32,12 @@ const PostAuthorBox = ({
             </AuthorImage>
             <AuthorTitle>
                 <AuthorName>
-                    <Link to={`/profile/${authorSlug}`}>{postAuthorName}</Link>
+                    <Link to={`/author-post/${postAuthorId}`}>{postAuthorName}</Link>
                 </AuthorName>
+                <AuthorDetailsText>{postAuthorType}</AuthorDetailsText>
                 <AuthorDegination>{postAuthordescription}</AuthorDegination>
             </AuthorTitle>
             <AuthorDetails>
-                <AuthorDetailsText>{postAuthorBio}</AuthorDetailsText>
 
                 <AuthorPostShare>
                     <Social sx={{ mt: "20px" }} shape="rounded-5" space={15}>
@@ -57,7 +58,7 @@ const PostAuthorBox = ({
 
                 <ButtonBox>
                     <Button
-                        path={`/profile/${authorSlug}`}
+                        path={`/author-post/${postAuthorId}`}
                         size="large"
                         sx={{ fontSize: "14px !important" }}
                     >

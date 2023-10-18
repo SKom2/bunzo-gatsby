@@ -35,4 +35,10 @@ export default class Api {
             headers: this._config.headers,
         }).then((res) => this._getResponsiveData(res));
     }
+
+    getAuthor(id) {
+        return fetch(`${this._config.url}/article/getAuthorById/${id}`, {
+            headers: this._config.headers,
+        }).then((res) => this._getResponsiveData(res));
+    }
 }

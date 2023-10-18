@@ -31,7 +31,6 @@ const FromFollowingArea = ({followingApiData}) => {
         postsByAuthor[authorId].push(data);
     });
 
-    console.log(postsByAuthor)
     return (
         <FromFollowingWrap>
             <Container>
@@ -102,11 +101,14 @@ const FromFollowingArea = ({followingApiData}) => {
                                             postAuthorImage={
                                                 postsByAuthor[key][0].author.image
                                             }
+                                            postAuthorId={
+                                                postsByAuthor[key][0].authorId
+                                            }
                                             postAuthorName={
                                                 postsByAuthor[key][0].author.name
                                             }
-                                            postAuthorBio={
-                                                postsByAuthor[key][0].author.bio
+                                            postAuthorType={
+                                                postsByAuthor[key][0].author.type
                                             }
                                             postAuthordescription={
                                                 postsByAuthor[key][0].author

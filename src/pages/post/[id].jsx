@@ -54,8 +54,6 @@ const SinglePosts = ({ id, location, pageContext }) => {
       })
   }, [])
 
-  console.log(post)
-
   return (
     <Layout>
       <SEO title={post.title} pathname="/" />
