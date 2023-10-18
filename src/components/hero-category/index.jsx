@@ -15,7 +15,7 @@ const HeroCategory = ({ image, name }) => {
     );
 };
 HeroCategory.propTypes = {
-    image: PropTypes.object,
+    image: PropTypes.string,
     name: PropTypes.string,
 };
 export default HeroCategory;

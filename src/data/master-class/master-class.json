@@ -1,0 +1,32 @@
+[
+  {
+    "id": "master-class-pages",
+    "title": "Take part in our unique culinary master classes!",
+    "intro": "Welcome to the page of our unique culinary master classes! Here you have the opportunity not only to learn the intricacies of the art of cooking from experienced chefs, but also to try your hand at preparing delicious dishes. Our master classes are a unique chance to reveal your culinary potential and delight yourself and your loved ones with magnificent dishes.",
+    "master-class-advantages": {
+      "advantages_title": "Why is our master class useful?",
+      "advantages": [
+        {
+          "title": "Instructions from professionals",
+          "text": "Our master classes are conducted by experienced chefs with many years of experience. You will receive detailed instructions and cooking tips that will enrich your culinary experience.",
+          "image": "../../data/images/master-class/1.jpeg"
+        },
+        {
+          "title": "Practical skills",
+          "text": "Participation in master classes will allow you to directly try cooking under the guidance of a professional. Practice is the best way to learn.",
+          "image": "../../data/images/master-class/2.jpeg"
+        },
+        {
+          "title": "Interactive Training",
+          "text": "Our master classes are not just about watching videos, they are interactive learning where you can ask questions and get answers in real time.",
+          "image": "../../data/images/master-class/3.jpeg"
+        },
+        {
+          "title": "Community of Like-Minded People",
+          "text": "You'll join a culinary community where you can discuss recipes, share experiences, and connect with people who share your passion for cooking.",
+          "image": "../../data/images/master-class/4.jpeg"
+        }
+      ]
+    }
+  }
+]

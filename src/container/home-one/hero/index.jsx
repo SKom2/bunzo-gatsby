@@ -23,7 +23,7 @@ const HeroOne = ({ trendingApiData }) => {
                             <HeroCategoryArea>
                                 {trendingApiData.slice(0, 4).map((cat) => (
                                     <HeroCategory
-                                        key={cat.name}
+                                        key={cat.id}
                                         name={cat.name}
                                         image={cat.image}
                                     />
