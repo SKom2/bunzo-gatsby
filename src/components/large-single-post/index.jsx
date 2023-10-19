@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import { slugify } from "../../utils/functions";
+import { getConvertedDate, slugify } from "../../utils/functions";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import {
     LargeBlogPostWrap,
@@ -22,64 +22,55 @@ import {
     CountNumber,
 } from "./style";
 const LargeSinglePosts = ({
-    title,
-    thume_image,
-    slug,
-    body,
-    date,
-    categories,
-    authorSlug,
-    dateSlug,
-    authorId,
+  title,
+  image,
+  tag,
+  name,
+  id,
+  date,
+  description
 }) => {
-    const image = getImage(thume_image);
     return (
         <LargeBlogPostWrap>
             <LargeThum>
-                <Link to={`/${slug}`}>
-                    <GatsbyImage image={image} alt="" />
+                <Link to={`/post/${id}`}>
+                    <img src={`http://45.120.178.247:8081/${image}`} alt="" style={{width: "100%"}}/>
                 </Link>
             </LargeThum>
             <AuthorBlogPostContent>
                 <BlogDetailsMetaBox>
                     <PostMetaLeftSide>
                         <BlogPostCategory>
-                            {categories &&
-                                categories.map((cat, i) => (
-                                    <p key={i} className={`cat-btn ${cat.name}`}>
-                                        {cat.name}
-                                    </p>
-                                ))}
+                            <p className={`cat-btn ${tag}`}>
+                                {tag}
+                            </p>
                         </BlogPostCategory>
                         <BlogPostAuthor>
-                            By <p>{authorId}</p>
+                            By <p>{name}</p>
                         </BlogPostAuthor>
                     </PostMetaLeftSide>
                     <PostMetaRightSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
                     </PostMetaRightSide>
                 </BlogDetailsMetaBox>
                 <Title>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </Title>
-                <DescText>{body}</DescText>
+                <DescText>{description}</DescText>
             </AuthorBlogPostContent>
         </LargeBlogPostWrap>
     );
 };
 LargeSinglePosts.propTypes = {
+    id: PropTypes.string,
     title: PropTypes.string,
-    thume_image: PropTypes.object,
-    video_link: PropTypes.object,
+    image: PropTypes.string,
     date: PropTypes.string,
-    slug: PropTypes.string,
-    dateSlug: PropTypes.string,
-    categories: PropTypes.array,
-    body: PropTypes.string,
-    authorSlug: PropTypes.string,
-    authorId: PropTypes.string,
+    description: PropTypes.string,
+    tag: PropTypes.string,
+    name: PropTypes.string
 };
 export default LargeSinglePosts;

@@ -10,6 +10,7 @@ import { BlogDetailsArea, PostTitleArea, PostTitle } from "./style";
 import { useEffect, useState } from "react";
 import Api from "../../api/Api";
 import { api } from "../../../config/config";
+import { formatTitleToURL } from "../../utils/functions";
 
 const AuthorPosts = ({ id, location, pageContext }) => {
   const [author, setAuthor] = useState({})
@@ -27,7 +28,7 @@ const AuthorPosts = ({ id, location, pageContext }) => {
   return (
     <Layout>
       <SEO title={"Author Post"} pathname="/" />
-      <PageBreadcrumb pageContext={pageContext} location={location} />
+      <PageBreadcrumb pageContext={pageContext} location={location} title={author.name}/>
       <BlogDetailsArea>
         <Container>
           <Row>
@@ -40,35 +41,23 @@ const AuthorPosts = ({ id, location, pageContext }) => {
           <Row className="gx-5">
             <Col lg={8}>
               <Row>
-                {data.allMarkdownRemark.edges.map((blog, i) => {
+                {author.article &&
+                  author.article.map((blog, i) => {
                   return (
                     <Col lg={12} key={i}>
                       <LargeSinglePosts
-                        title={
-                          blog.node.frontmatter.title
-                        }
-                        thume_image={
-                          blog.node.frontmatter
-                            .thume_image
-                        }
-                        categories={
-                          blog.node.frontmatter
-                            .categories
-                        }
-                        body={blog.node.excerpt}
-                        date={
-                          blog.node.frontmatter.date
-                        }
-                        slug={blog.node.fields.slug}
+                        id={blog.id}
+                        title={blog.title}
+                        image={blog.image}
+                        tag={blog.tag}
+                        name={author.name}
+                        slug={formatTitleToURL(blog.title)}
+                        authorId={blog.authorId}
+                        date={blog.createdAt}
                         authorSlug={
-                          blog.node.fields.authorId
+                          blog.authorId
                         }
-                        authorId={
-                          blog.node.fields.authorId
-                        }
-                        dateSlug={
-                          blog.node.fields.dateSlug
-                        }
+                        description={blog.description}
                       />
                     </Col>
                   );
@@ -85,7 +74,7 @@ const AuthorPosts = ({ id, location, pageContext }) => {
                     postAuthordescription={
                       author.description
                     }
-                    authorSlug={author.fields.authorId}
+                    authorSlug={author.authorId}
                   />
                 )}
               </div>
@@ -98,9 +87,7 @@ const AuthorPosts = ({ id, location, pageContext }) => {
 };
 
 AuthorPosts.propTypes = {
-  data: PropTypes.object,
-  location: PropTypes.object,
-  pageContext: PropTypes.object,
+  id: PropTypes.string
 };
 
 export default AuthorPosts;

@@ -15,7 +15,7 @@ export const LargeThum = styled.div`
 export const AuthorBlogPostContent = styled.div``;
 export const BlogDetailsMetaBox = styled.div`
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,9 +45,12 @@ export const BlogPostAuthor = styled.span`
     margin-left: 15px;
 `;
 
-export const PostMetaRightSide = styled.div``;
+export const PostMetaRightSide = styled.div`
+`;
 
 export const PostDate = styled.span`
+    display: flex;
+    align-items: center;
     position: relative;
     font-size: 13px;
     i {
@@ -58,7 +61,9 @@ export const PostReadTime = styled.span`
     font-size: 13px;
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+    margin-bottom: 15px;
+`;
 export const DescText = styled.p``;
 export const LargeBlogPostbottom = styled.div`
     display: flex;

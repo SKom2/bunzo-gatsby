@@ -25,15 +25,9 @@ import {
   BlogDetailsPostAuthor,
   PostMidSide,
   PostDate,
-  PostTime,
-  PostMetaRightSide,
   Title,
   MetaBox,
   CategorySocialContent,
-  PostSocialItems,
-  PostCategoryItems,
-  CommentArea,
-  CommentTitle,
 } from "./style";
 import ReactMarkdown from 'react-markdown'
 import Api from "../../api/Api";
@@ -133,6 +127,7 @@ const SinglePosts = ({ id, location, pageContext }) => {
               <div className="blog-details-sidebar">
                 {post.author && (
                   <PostAuthorBox
+                    postAuthorId={post.authorId}
                     postAuthorName={post.author.name}
                     postAuthorImage={post.author.image}
                     postAuthordescription={post.author.description}

@@ -39,7 +39,7 @@ const TrendingSingleItems = ({
         <TrendingSingleItem>
             <TrendingPostThum>
                 <Link to={`/post/${id}`}>
-                    <img src={`http://45.120.178.247:8081/${image}`} alt="" style={{maxHeight: "160px"}}/>
+                    <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
                 </Link>
             </TrendingPostThum>
             <TrendingPostContent>

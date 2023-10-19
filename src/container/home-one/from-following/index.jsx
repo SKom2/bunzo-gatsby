@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { StaticImage } from "gatsby-plugin-image";
 import Swiper, { SwiperSlide } from "@components/swiper";
 import SingleFollowingPosts from "../../../components/single-following-post";
 import PostAuthorBox from "../../../components/post-author";
@@ -12,23 +10,26 @@ import {
     FollowingSliderNavigation,
     FromFollowingLeftSide,
     FromFollowingRightSide,
-    FollowingAddBanner,
 } from "./style";
 import { formatTitleToURL } from "../../../utils/functions";
-import Api from "../../../api/Api";
-import { api } from "../../../../config/config";
-
+function isObjectHasKey(obj, objKey) {
+    return Object.keys(obj).findIndex((key) => key === objKey);
+}
 const FromFollowingArea = ({followingApiData}) => {
     let postsByAuthor = {};
 
     followingApiData.forEach((data) => {
         const { authorId } = data;
 
-        if (!postsByAuthor[authorId]) {
-            postsByAuthor[authorId] = [];
+        const keyIndex = isObjectHasKey(postsByAuthor, authorId);
+        if (keyIndex < 0) {
+            postsByAuthor = {
+                ...postsByAuthor,
+                [authorId]: [data],
+            };
+        } else {
+            postsByAuthor[authorId].push(data);
         }
-
-        postsByAuthor[authorId].push(data);
     });
 
     return (

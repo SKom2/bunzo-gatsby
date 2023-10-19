@@ -22,9 +22,7 @@ const PostAuthorBox = ({
     postAuthorImage,
     postAuthorId,
     postAuthorType,
-    authorSlug,
 }) => {
-    const image = getImage(postAuthorImage);
     return (
         <FollowingAuthorArea>
             <AuthorImage>
