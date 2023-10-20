@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { MasterClassAdvantages, MasterClassArea } from "./style";
 import { graphql, useStaticQuery } from "gatsby";
 import Advantage from "../../../components/advantage";
+import MasterClassForm from "../../../components/master-class-form";
 
 const OurMasterClass = () => {
   const masterClassInfoQuery = useStaticQuery(graphql`
@@ -63,12 +64,11 @@ const OurMasterClass = () => {
         </MasterClassAdvantages>
         <Row className="justify-content-center">
           <Col lg={8} xs={7}>
-            <div className='section-title mb-40'>
-              <h1>Sign up for a master class</h1>
-            </div>
+            <MasterClassForm />
           </Col>
         </Row>
       </Container>
+
     </MasterClassArea>
   );
 };
