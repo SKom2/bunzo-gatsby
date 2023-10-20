@@ -1,7 +1,5 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import { Container, Row, Col } from "react-bootstrap";
-import { StaticImage } from "gatsby-plugin-image";
 import Swiper, { SwiperSlide } from "@components/swiper";
 import SingleFollowingPosts from "../../../components/single-following-post";
 import PostAuthorBox from "../../../components/post-author";
@@ -12,77 +10,16 @@ import {
     FollowingSliderNavigation,
     FromFollowingLeftSide,
     FromFollowingRightSide,
-    FollowingAddBanner,
 } from "./style";
-
+import { formatTitleToURL } from "../../../utils/functions";
 function isObjectHasKey(obj, objKey) {
     return Object.keys(obj).findIndex((key) => key === objKey);
 }
-
-const FromFollowingArea = ({}) => {
-    const fromFollowingQuery = useStaticQuery(graphql`
-        query FromFollowingQuery {
-            allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
-                edges {
-                    node {
-                        id
-                        frontmatter {
-                            title
-                            date(formatString: "DD MMMM YYYY")
-                            categories {
-                                name
-                                color
-                            }
-                            is_featured
-                            thume_image {
-                                childImageSharp {
-                                    gatsbyImageData(
-                                        width: 750
-                                        height: 400
-                                        quality: 100
-                                    )
-                                }
-                            }
-                            author {
-                                name
-                                bio
-                                description
-                                fields {
-                                    authorId
-                                }
-                                social {
-                                    twitter
-                                    google
-                                    facebook
-                                }
-                                image {
-                                    childImageSharp {
-                                        gatsbyImageData(
-                                            layout: FIXED
-                                            width: 80
-                                            height: 80
-                                            quality: 100
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                        fields {
-                            slug
-                            authorId
-                            dateSlug
-                        }
-                        excerpt(pruneLength: 225)
-                    }
-                }
-            }
-        }
-    `);
-    const fromFollowingData = fromFollowingQuery.allMarkdownRemark.edges;
+const FromFollowingArea = ({followingApiData}) => {
     let postsByAuthor = {};
 
-    fromFollowingData.forEach((data) => {
-        const { authorId } = data.node.fields;
+    followingApiData.forEach((data) => {
+        const { authorId } = data;
 
         const keyIndex = isObjectHasKey(postsByAuthor, authorId);
         if (keyIndex < 0) {
@@ -94,6 +31,7 @@ const FromFollowingArea = ({}) => {
             postsByAuthor[authorId].push(data);
         }
     });
+
     return (
         <FromFollowingWrap>
             <Container>
@@ -136,7 +74,7 @@ const FromFollowingArea = ({}) => {
                                         <Row className="gx-5">
                                             {postsByAuthor[key]
                                                 .slice(0, 4)
-                                                .map((post, i) => {
+                                                .map((item, i) => {
                                                     return (
                                                         <Col
                                                             md={6}
@@ -144,51 +82,14 @@ const FromFollowingArea = ({}) => {
                                                             key={i}
                                                         >
                                                             <SingleFollowingPosts
-                                                                title={
-                                                                    post.node
-                                                                        .frontmatter
-                                                                        .title
-                                                                }
-                                                                thume_image={
-                                                                    post.node
-                                                                        .frontmatter
-                                                                        .thume_image
-                                                                }
-                                                                categories={
-                                                                    post.node
-                                                                        .frontmatter
-                                                                        .categories
-                                                                }
-                                                                body={
-                                                                    post.node
-                                                                        .excerpt
-                                                                }
-                                                                date={
-                                                                    post.node
-                                                                        .frontmatter
-                                                                        .date
-                                                                }
-                                                                authorSlug={
-                                                                    post.node
-                                                                        .fields
-                                                                        .authorId
-                                                                }
-                                                                slug={
-                                                                    post.node
-                                                                        .fields
-                                                                        .slug
-                                                                }
-                                                                authorId={
-                                                                    post.node
-                                                                        .frontmatter
-                                                                        .author
-                                                                        .name
-                                                                }
-                                                                dateSlug={
-                                                                    post.node
-                                                                        .fields
-                                                                        .dateSlug
-                                                                }
+                                                              id={item.id}
+                                                              title={item.title}
+                                                              image={item.image}
+                                                              tag={item.tag}
+                                                              name={item.author.name}
+                                                              slug={formatTitleToURL(item.title)}
+                                                              authorId={item.authorId}
+                                                              date={item.createdAt}
                                                             />
                                                         </Col>
                                                     );
@@ -199,37 +100,25 @@ const FromFollowingArea = ({}) => {
                                     <FromFollowingRightSide className="col">
                                         <PostAuthorBox
                                             postAuthorImage={
-                                                postsByAuthor[key][0].node
-                                                    .frontmatter.author.image
+                                                postsByAuthor[key][0].author.image
+                                            }
+                                            postAuthorId={
+                                                postsByAuthor[key][0].authorId
                                             }
                                             postAuthorName={
-                                                postsByAuthor[key][0].node
-                                                    .frontmatter.author.name
+                                                postsByAuthor[key][0].author.name
                                             }
-                                            postAuthorBio={
-                                                postsByAuthor[key][0].node
-                                                    .frontmatter.author.bio
+                                            postAuthorType={
+                                                postsByAuthor[key][0].author.type
                                             }
                                             postAuthordescription={
-                                                postsByAuthor[key][0].node
-                                                    .frontmatter.author
+                                                postsByAuthor[key][0].author
                                                     .description
                                             }
                                             authorSlug={
-                                                postsByAuthor[key][0].node
-                                                    .frontmatter.author.fields
-                                                    .authorId
+                                                postsByAuthor[key][0].authorId
                                             }
                                         />
-
-                                        <FollowingAddBanner>
-                                            <a href="/">
-                                                <StaticImage
-                                                    src="../../../data/images/banners/home-following-banner.png"
-                                                    alt=""
-                                                />
-                                            </a>
-                                        </FollowingAddBanner>
                                     </FromFollowingRightSide>
                                 </Row>
                             </SwiperSlide>

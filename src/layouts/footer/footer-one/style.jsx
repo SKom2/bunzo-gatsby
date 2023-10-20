@@ -3,7 +3,7 @@ import styled, { device, themeGet } from "@theme/utils";
 export const FooterWrap = styled.footer``;
 export const FooterTopArea = styled.div`
     background-color: #22262a;
-    padding: 60px 0 90px;
+    padding: 60px 0 60px;
 `;
 export const FooterWidget = styled.div`
     margin-top: 30px;
@@ -57,7 +57,7 @@ export const ButtonBox = styled.div``;
 
 export const FooterMenuWidget = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     margin-right: -10px;
     margin-left: -5px;
     flex-wrap: wrap;

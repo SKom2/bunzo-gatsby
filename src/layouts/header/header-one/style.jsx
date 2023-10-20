@@ -3,7 +3,7 @@ import styled, { themeGet, device } from "@theme/utils";
 export const HeaderWrap = styled.header``;
 export const HeaderTopArea = styled.div`
     background-color: #22262a;
-    padding-bottom: 10px;
+    padding: 10px 0;
 `;
 export const HeaderTopMenuList = styled.ul`
     margin-top: 10px;
@@ -49,7 +49,6 @@ export const NavLink = styled.a`
 `;
 
 export const HeaderTopContactInfo = styled.div`
-    margin-top: 10px;
     display: flex;
     justify-content: center;
 `;

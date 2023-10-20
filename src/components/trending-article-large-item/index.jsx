@@ -21,78 +21,49 @@ import {
     PostMetaRightSide,
     TrendingLargePostThum,
 } from "./style";
+import { getConvertedDate } from "../../utils/functions";
 
 const TrendingSingleLargeItems = ({
     title,
-    thume_image,
-    small_image,
+    image,
+    tag,
+    name,
     date,
     dateSlug,
-    categories,
     authorId,
     authorSlug,
+    id,
     slug,
 }) => {
-    const images = withArtDirection(getImage(thume_image), [
-        {
-            media: "(max-width: 1024px)",
-            image: getImage(thume_image),
-        },
-        {
-            media: "(max-width: 575px)",
-            image: getImage(small_image),
-        },
-    ]);
+
     return (
         <TrendingSingleItem>
             <TrendingLargePostThum>
-                <Link to={`/${slug}`}>
-                    <GatsbyImage image={images} alt="" />
+                <Link to={`/post/${id}`}>
+                    <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
                 </Link>
             </TrendingLargePostThum>
             <TrendingPostContent>
                 <TrendingBlogPostTop>
                     <TrendingBlogPostCategory>
-                        {categories &&
-                            categories.map((cat, i) => (
-                                <Link
-                                    key={i}
-                                    to={`/category/${slugify(cat.name)}`}
-                                    className={`cat-btn ${cat.color}`}
-                                >
-                                    {cat.name}
-                                </Link>
-                            ))}
+                        <p className={`cat-btn ${tag}`}>
+                            {tag}
+                        </p>
                     </TrendingBlogPostCategory>
                     <TrendingBlogPostAuthor>
-                        By <Link to={`/profile/${authorSlug}`}>{authorId}</Link>
+                        By <p>{name}</p>
                     </TrendingBlogPostAuthor>
                 </TrendingBlogPostTop>
                 <HrendingBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </HrendingBlogPostTitle>
                 <TrendingBlogPostMeta>
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
-                        <ReadTime>10 min read</ReadTime>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </Link>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </Link>
-                    </PostMetaRightSide>
                 </TrendingBlogPostMeta>
             </TrendingPostContent>
         </TrendingSingleItem>

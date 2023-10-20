@@ -16,68 +16,46 @@ import {
     PostDate,
     PostReadTime,
 } from "./style";
+import { getConvertedDate } from "../../utils/functions";
 
 const SingleFollowingPosts = ({
     title,
-    thume_image,
+    image,
     date,
     slug,
-    dateSlug,
-    categories,
-    authorSlug,
+    tag,
+    name,
     authorId,
+    id
 }) => {
-    const image = getImage(thume_image);
     return (
         <SingleFollowingPost>
             <FollowingPostThum>
                 <Link to={`/${slug}`}>
-                    <GatsbyImage image={image} alt="" />
+                    <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
                 </Link>
             </FollowingPostThum>
             <FollowingPostContent>
                 <FollowingBlogPostTop>
                     <FollowingBlogPostCategory>
-                        {categories &&
-                            categories.map((cat, i) => (
-                                <Link
-                                    key={i}
-                                    to={`/category/${slugify(cat.name)}`}
-                                    className={`cat-btn ${cat.color}`}
-                                >
-                                    {cat.name}
-                                </Link>
-                            ))}
+                        <p className={`cat-btn ${tag}`}>
+                            {tag}
+                        </p>
                     </FollowingBlogPostCategory>
                     <FollowingBlogPostAuthor>
-                        By <Link to={`/profile/${authorSlug}`}>{authorId}</Link>
+                        By <p>{name}</p>
                     </FollowingBlogPostAuthor>
                 </FollowingBlogPostTop>
                 <FollowingBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </FollowingBlogPostTitle>
                 <FollowingBlogPostMeta>
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
-                        <PostReadTime>10 min read</PostReadTime>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <a href="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </a>
-                        <a href="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </a>
-                    </PostMetaRightSide>
                 </FollowingBlogPostMeta>
             </FollowingPostContent>
         </SingleFollowingPost>

@@ -8,10 +8,10 @@ const TrendingTopicItems = ({ name, color, image }) => {
     const images = getImage(image);
     return (
         <SingleTrendingTopicItem>
-            <Link to={`/category/${slugify(name)}`}>
+            <p>
                 <GatsbyImage image={images} alt="" />
                 <Title>{name}</Title>
-            </Link>
+            </p>
         </SingleTrendingTopicItem>
     );
 };

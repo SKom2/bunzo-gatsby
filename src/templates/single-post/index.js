@@ -35,24 +35,36 @@ import {
     CommentArea,
     CommentTitle,
 } from "./style";
+import ReactMarkdown from 'react-markdown'
+import Api from "../../api/Api";
+import { api } from "../../../config/config";
+import { useEffect, useState } from "react";
 
 const SinglePosts = ({ data, location, pageContext }) => {
     const post = data.markdownRemark.frontmatter;
     const { authorId, dateSlug } = data.markdownRemark.fields;
     const { author } = post;
+    console.log(data)
 
     const image = getImage(post.thume_image.childImageSharp);
 
     // Social Share
     const baseUrl = "https://hasthems.com";
+    const articleApi = new Api(api);
+    const [apiData, setApiData] = useState([]);
 
-    // Disqus Comments add
-    const disqusShorttname = "mitech-1";
-    const disquscConfig = {
-        identifier: data.markdownRemark.id,
-        title: post.title,
-        url: baseUrl + "/" + pageContext.slug,
-    };
+    useEffect(() => {
+        articleApi
+          .getArticles({
+              page: 0,
+              q: "",
+              isTrends: true,
+              isFollowing: false,
+          })
+          .then((res) => {
+              setApiData(res);
+          });
+    }, [])
 
     return (
         <Layout>
@@ -77,68 +89,45 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                     {post.categories &&
                                                         post.categories.map(
                                                             (categorie, i) => (
-                                                                <Link
+                                                                <p
                                                                     className={`post-category ${categorie.color}`}
                                                                     key={`${slugify(
                                                                         categorie
                                                                     )}-${i}`}
-                                                                    to={`/category/${slugify(
-                                                                        categorie.name
-                                                                    )}`}
                                                                 >
                                                                     {
                                                                         categorie.name
                                                                     }
-                                                                </Link>
+                                                                </p>
                                                             )
                                                         )}
                                                 </MetaBox>
                                                 <BlogDetailsPostAuthor>
                                                     By{" "}
-                                                    <Link
-                                                        to={`/profile/${authorId}`}
-                                                    >
+                                                    <p>
                                                         {author.name}
-                                                    </Link>
+                                                    </p>
                                                 </BlogDetailsPostAuthor>
                                             </PostMetaLeftSide>
 
                                             <PostMidSide>
                                                 <PostDate>
                                                     <i className="icofont-ui-calendar"></i>
-                                                    <Link
-                                                        to={`/date/${dateSlug}`}
+                                                    <p
                                                     >
                                                         {post.date}
-                                                    </Link>
+                                                    </p>
                                                 </PostDate>
-                                                <PostTime>10 min read</PostTime>
                                             </PostMidSide>
-
-                                            <PostMetaRightSide>
-                                                <a href="/">
-                                                    <StaticImage
-                                                        src="../../data/images/icons/small-bookmark.png"
-                                                        alt=""
-                                                    />
-                                                </a>
-                                                <a href="/">
-                                                    <StaticImage
-                                                        src="../../data/images/icons/heart.png"
-                                                        alt=""
-                                                    />
-                                                </a>
-                                            </PostMetaRightSide>
                                         </BlogDetailsMetaBox>
 
                                         <Title>{post.title}</Title>
                                         <SingleBlogContent
-                                            dangerouslySetInnerHTML={{
-                                                __html: data.markdownRemark
-                                                    .html,
-                                            }}
+                                          dangerouslySetInnerHTML={{
+                                              __html: data.markdownRemark
+                                                .html,
+                                          }}
                                         />
-
                                         <CategorySocialContent>
                                             <PostCategoryItems>
                                                 <span>Tags:</span>
@@ -189,16 +178,6 @@ const SinglePosts = ({ data, location, pageContext }) => {
                                                 </SocialLink>
                                             </Social>
                                         </CategorySocialContent>
-
-                                        <CommentArea>
-                                            <CommentTitle>
-                                                Comments
-                                            </CommentTitle>
-                                            <DiscussionEmbed
-                                                shortname={disqusShorttname}
-                                                config={disquscConfig}
-                                            />
-                                        </CommentArea>
                                     </Content>
                                 </PostDetailsBody>
                             </PostDetailsContentWrap>

@@ -29,4 +29,11 @@ module.exports = {
     shortName: "bunzo", // shortname for manifest. *Must* be shorter than 12 characters
     themeColor: "#5E60E7",
     backgroundColor: "#fff",
+    api: {
+        url: 'http://45.120.178.247:8081',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+
 };

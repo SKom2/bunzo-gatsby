@@ -30,7 +30,7 @@ const ReacentArticalVerticalPost = ({
             </MostPopulerThum>
             <MostPopulerContent>
                 <PostAuthor>
-                    By <Link to={`/profile/${authorSlug}`}>{authorSlug}</Link>
+                    By <p>{authorSlug}</p>
                 </PostAuthor>
                 <Title>
                     <Link to={`/${slug}`}>{title}</Link>

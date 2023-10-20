@@ -50,7 +50,7 @@ export const TrendingBlogPostCategory = styled.div`
     ${device.medium} {
         margin-right: 25px;
     }
-    a {
+    p {
         min-width: 50px;
         text-align: center;
         padding: 4px 5px;
@@ -67,9 +67,11 @@ export const TrendingBlogPostCategory = styled.div`
 `;
 
 export const TrendingBlogPostAuthor = styled.div`
+    display: flex;
+    gap: 4px;
     color: #9b9ea1;
     font-size: 13px;
-    a {
+    p {
         color: #000000;
     }
     ${device.medium} {
@@ -88,23 +90,14 @@ export const TrendingBlogPostMeta = styled.div`
 export const PostMetaLeftSide = styled.div``;
 
 export const PostDate = styled.span`
+    display: flex;
+    align-items: center;
     position: relative;
     padding-right: 10px;
     margin-right: 10px;
     font-size: 13px;
     i {
         margin-right: 3px;
-    }
-    &::after {
-        position: absolute;
-        content: "";
-        right: -0px;
-        top: 50%;
-        height: 4px;
-        width: 4px;
-        background: #000000;
-        border-radius: 50000px;
-        transform: translateY(-50%);
     }
 `;
 export const ReadTime = styled.span`

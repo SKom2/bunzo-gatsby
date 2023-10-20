@@ -16,63 +16,49 @@ import {
     PostReadTime,
     PostMetaRightSide,
 } from "./style";
+import { getConvertedDate } from "../../utils/functions";
 
 const HeroBlogPost = ({
     title,
     body,
     date,
     slug,
+    tag,
     dateSlug,
     categories,
     authorSlug,
+    name,
+    id,
+    description
 }) => {
+
+    const maxCharacters = 100; // Максимальное количество символов
+    const truncatedDescription = description.length > maxCharacters ? description.slice(0, maxCharacters) + '...' : description;
+
     return (
         <Fragment>
             <SingleHeroBlogPost>
                 <HeroBlogPostTop>
                     <HeroBlogPostCategory>
-                        {categories &&
-                            categories.map((cat, i) => (
-                                <Link
-                                    key={i}
-                                    to={`category/${slugify(cat.name)}`}
-                                    className={`cat-btn ${cat.color}`}
-                                >
-                                    {cat.name}
-                                </Link>
-                            ))}
+                        <p className={`cat-btn ${tag}`}>
+                            {tag}
+                        </p>
                     </HeroBlogPostCategory>
                     <HeroBlogPostAuthor>
-                        By{" "}
-                        <Link to={`/profile/${authorSlug}`}>{authorSlug}</Link>
+                        By <p>{name}</p>
                     </HeroBlogPostAuthor>
                 </HeroBlogPostTop>
                 <HeroBlogPostTitle>
-                    <Link to={`/${slug}`}>{title}</Link>
+                    <Link to={`/post/${id}`}>{title}</Link>
                 </HeroBlogPostTitle>
-                <PostShortDetails>{body}</PostShortDetails>
+                <PostShortDetails>{truncatedDescription}</PostShortDetails>
                 <HeroBlogPostMeta>
                     <PostMetaLeftSide>
                         <PostDate>
                             <i className="icofont-ui-calendar"></i>
-                            <Link to={`/date/${dateSlug}`}>{date}</Link>
+                            <p>{getConvertedDate(date)}</p>
                         </PostDate>
-                        <PostReadTime>14 min read</PostReadTime>
                     </PostMetaLeftSide>
-                    <PostMetaRightSide>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/small-bookmark.png"
-                                alt=""
-                            />
-                        </Link>
-                        <Link to="/">
-                            <StaticImage
-                                src="../../data/images/icons/heart.png"
-                                alt=""
-                            />
-                        </Link>
-                    </PostMetaRightSide>
                 </HeroBlogPostMeta>
             </SingleHeroBlogPost>
         </Fragment>

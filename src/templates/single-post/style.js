@@ -47,30 +47,25 @@ export const PostMetaLeftSide = styled.div`
     }
 `;
 
-export const BlogDetailsPostAuthor = styled.div``;
+export const BlogDetailsPostAuthor = styled.div`
+    display: flex;
+    gap: 4px;
+    p {
+        color: #000000;
+    }
+`;
 export const PostMidSide = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 `;
 export const PostDate = styled.span`
+    display: flex;
+    align-items: center;
     position: relative;
-    padding-right: 10px;
-    margin-right: 10px;
     font-size: 13px;
     i {
         margin-right: 5px;
-    }
-    &::after {
-        position: absolute;
-        content: "";
-        right: -0px;
-        top: 50%;
-        height: 4px;
-        width: 4px;
-        background: #000000;
-        border-radius: 50000px;
-        transform: translateY(-50%);
     }
 `;
 export const PostTime = styled.span`

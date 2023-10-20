@@ -15,21 +15,21 @@
         "about_us_digital-publishing": {
             "id": "digital-publishing",
             "image2": "../../data/images/icons/digital-publishing.png",
-            "title": "Digital Publishing",
-            "text1": "Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the 1500s when an unknown printer took galley type and scrambled.",
-            "text2": "Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard."
+            "title": "About site",
+            "text1": "On this website, you can explore a rich tapestry of Turkish culinary delights.",
+            "text2": "Discover authentic recipes, learn about the cultural significance of dishes, embark on a flavorful journey through the heart of Turkey's food traditions, and even contribute by sharing your own articles and culinary experiences."
         },
-        "history_title": "You Can <span>Read</span> And <span>Write</span> With Bunzo.",
+        "history_title": "You Can <span>Eat</span> And <span>Cook</span> With Bunzo.",
         "history": [
             {
                 "id": "1",
                 "title": "Mission & Vission",
-                "decText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text eve since the 1500 when an unknown printer took a galley type scrambled’s make a type specimen book. It has survived not only five centuries also the leap into electronic typesetting."
+                "decText": "Our website's mission is to be a premier source of information on Turkish cuisine, inspiring and educating our visitors. We aim not only to share unique recipes and culinary secrets from Turkey but also to bring a cultural and historical dimension to the world of culinary exploration."
             },
             {
                 "id": "2",
                 "title": "Bunzo History",
-                "decText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text eve since the 1500 when an unknown printer took a galley type scrambled’s make a type specimen book. It has survived not only five centuries also the leap into electronic typesetting."
+                "decText": "Many years ago, in sunny Istanbul, a group of passionate culinary enthusiasts gathered in a cozy restaurant to share their experiences with local dishes and discuss how they could share this culinary discovery with the rest of the world. Their passion for cuisine was infectious, and it sparked the idea for our website dedicated to Turkish cuisine."
             }
         ]
     }

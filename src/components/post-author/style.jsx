@@ -13,7 +13,10 @@ export const AuthorImage = styled.div`
     padding: 11px;
     margin-bottom: 25px;
     img {
-        border-radius: 100%;
+      border-radius: 100%;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
     }
 `;
 export const AuthorTitle = styled.div`

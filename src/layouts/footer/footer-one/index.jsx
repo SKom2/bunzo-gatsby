@@ -53,11 +53,16 @@ const Footer = () => {
     const { footerAbout, quickLink, quickLinkTwo, quickLinkThree } =
         footerQuery.footerJson;
 
+    const rowStyles = {
+        display: "flex",
+        justifyContent: "space-between",
+    };
+
     return (
         <FooterWrap>
             <FooterTopArea>
                 <Container>
-                    <Row>
+                    <Row sx={rowStyles}>
                         <Col lg={3} md={6} sm={6}>
                             <FooterWidget>
                                 <FooterLogo>
@@ -88,36 +93,6 @@ const Footer = () => {
                                         <i className="icofont-linkedin"></i>
                                     </SocialLink>
                                 </Social>
-                            </FooterWidget>
-                        </Col>
-                        <Col lg={4} md={6} sm={6}>
-                            <FooterWidget className="footer-subscribe-center">
-                                <FooterWidgetTitle>
-                                    <WidgetTitle>Subscribe</WidgetTitle>
-                                </FooterWidgetTitle>
-                                <FooterSubscribeWrap>
-                                    <SingleInput>
-                                        <Input
-                                            type="text"
-                                            placeholder="Your Name"
-                                        />
-                                    </SingleInput>
-                                    <SingleInput>
-                                        <Input
-                                            type="email"
-                                            placeholder="Email Address"
-                                        />
-                                    </SingleInput>
-                                    <ButtonBox>
-                                        <Button
-                                            size="large"
-                                            shape="rounded-10"
-                                            type="submit"
-                                        >
-                                            Subscribe Now
-                                        </Button>
-                                    </ButtonBox>
-                                </FooterSubscribeWrap>
                             </FooterWidget>
                         </Col>
                         <Col lg={5}>
@@ -154,73 +129,11 @@ const Footer = () => {
                                             ))}
                                     </FooterWidgetMenuList>
                                 </SingleFooterMenu>
-                                <SingleFooterMenu>
-                                    <FooterWidgetTitle>
-                                        <WidgetTitle>Category</WidgetTitle>
-                                    </FooterWidgetTitle>
-
-                                    <FooterWidgetMenuList>
-                                        {quickLinkThree &&
-                                            quickLinkThree.map(
-                                                (linkItem, i) => (
-                                                    <NavItem
-                                                        key={`id-${i}-one`}
-                                                    >
-                                                        <Link
-                                                            to={linkItem.path}
-                                                        >
-                                                            {linkItem.text}
-                                                        </Link>
-                                                    </NavItem>
-                                                )
-                                            )}
-                                    </FooterWidgetMenuList>
-                                </SingleFooterMenu>
                             </FooterMenuWidget>
                         </Col>
                     </Row>
                 </Container>
             </FooterTopArea>
-            <FooterBottomArea>
-                <Container>
-                    <Row>
-                        <Col xs={12} sx={{ textAlign: "center" }}>
-                            <FooterBottomInner>
-                                <CopyrightText>
-                                    &copy; {new Date().getFullYear()}
-                                    <a
-                                        href="https://hasthemes.com/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {" "}
-                                        Bunzo{" "}
-                                    </a>
-                                    . Made with <HeartIcon /> by{" "}
-                                    <a
-                                        href="https://hasthemes.com/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        HasThemes
-                                    </a>
-                                </CopyrightText>
-                                <ButtonRightBox>
-                                    <Button
-                                        path="/contact-us"
-                                        size="large"
-                                        shape="rounded-10"
-                                    >
-                                        {" "}
-                                        Share your thinking{" "}
-                                        <i className="icofont-long-arrow-right"></i>
-                                    </Button>
-                                </ButtonRightBox>
-                            </FooterBottomInner>
-                        </Col>
-                    </Row>
-                </Container>
-            </FooterBottomArea>
         </FooterWrap>
     );
 };

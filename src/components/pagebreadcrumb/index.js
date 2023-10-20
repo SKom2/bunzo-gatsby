@@ -3,14 +3,22 @@ import { Col, Container, Row } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { PageBreadcrumbWrap, PageTitleContent } from "./style";
 
-const PageBreadcrumb = ({ crumbLabel, location, pageContext }) => {
+const PageBreadcrumb = ({ crumbLabel, title, location, pageContext }) => {
     const {
         breadcrumb: { crumbs },
     } = pageContext;
-    const customCrumbLabel = location.pathname.toLowerCase();
-    const crumbLabelArr = customCrumbLabel.split("/");
-    const label = crumbLabelArr[crumbLabelArr.length - 1];
-    const labelArr = label.split("-");
+    let labelArr;
+    if (title) {
+        const crumbLabelArr = title.split("/");
+        const label = crumbLabelArr[crumbLabelArr.length - 1];
+        labelArr = label.split("-");
+    } else {
+        const customCrumbLabel = location.pathname.toLowerCase();
+        const crumbLabelArr = customCrumbLabel.split("/");
+        const label = crumbLabelArr[crumbLabelArr.length - 1];
+        labelArr = label.split("-");
+    }
+
     const disableLinks = [
         "/events",
         "/category",

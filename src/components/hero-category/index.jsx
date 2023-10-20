@@ -6,21 +6,16 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { SingleHeroCategoryItem, HeroCategoryInnerBox, Title } from "./style";
 
 const HeroCategory = ({ image, name }) => {
-    const images = getImage(image);
     return (
         <SingleHeroCategoryItem>
-            <Link to={`/category/${slugify(name)}`}>
-                <GatsbyImage image={images} alt={name} />
-                <HeroCategoryInnerBox className="single-hero-hover">
-                    <Title>{name}</Title>
-                    <i className="icon icofont-long-arrow-right"></i>
-                </HeroCategoryInnerBox>
-            </Link>
+            <span>
+                <img src={`http://45.120.178.247:8081/${image}`} alt=""/>
+            </span>
         </SingleHeroCategoryItem>
     );
 };
 HeroCategory.propTypes = {
-    image: PropTypes.object,
+    image: PropTypes.string,
     name: PropTypes.string,
 };
 export default HeroCategory;

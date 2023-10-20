@@ -12,7 +12,6 @@ const ContactUsPage = ({ location, pageContext }) => {
             <SEO title="Contact Us" pathname="/" />
             <PageBreadcrumb pageContext={pageContext} location={location} />
             <OurOffices />
-            <ContactFormArea />
         </Layout>
     );
 };

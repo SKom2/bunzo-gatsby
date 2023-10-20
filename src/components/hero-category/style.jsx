@@ -1,7 +1,7 @@
 import styled, { device, themeGet } from "@theme/utils";
 
 export const SingleHeroCategoryItem = styled.div`
-    a {
+    span {
         display: block;
         margin-bottom: 0;
         margin-top: 35px;
@@ -20,13 +20,9 @@ export const SingleHeroCategoryItem = styled.div`
         ${device.xlarge} {
             margin-bottom: 30px;
         }
-
-        .gatsby-image-wrapper-constrained {
-            display: block !important;
-            img {
-                border-radius: 15px;
-                width: 100%;
-            }
+        img {
+            border-radius: 15px;
+            width: 100%;
         }
         &::after {
             position: absolute;
@@ -47,18 +43,6 @@ export const SingleHeroCategoryItem = styled.div`
     .single-hero-hover {
         opacity: 0;
         visibility: hidden;
-    }
-    &:hover {
-        a {
-            &::after {
-                opacity: 1;
-                visibility: visible;
-            }
-        }
-        .single-hero-hover {
-            opacity: 1;
-            visibility: visible;
-        }
     }
 `;
 
